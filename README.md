@@ -3,8 +3,11 @@ A collection of commands to use in your terminal/command prompt.
 
 ## Installation
 
-* Todo: Add Go build syntax
-
+##### Building all commmands at once
+```
+go run build.go
+```
+##### Enabling commands globally
 Add the bin folder to your environment variables. Now you'll be able to use the command everywhere.
 
 
