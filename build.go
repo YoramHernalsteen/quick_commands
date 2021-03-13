@@ -14,6 +14,7 @@ var (
 
 func main() {
 	getFiles("./commands")
+	fmt.Printf("\n")
 	for _, file := range files {
 		build(file)
 	}
@@ -38,5 +39,6 @@ func build(file string) {
 		fmt.Println("hola")
 		log.Fatal(err)
 	}
+
 	fmt.Println("Sucessfully build:", file)
 }
