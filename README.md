@@ -21,6 +21,12 @@ Add the bin folder to your environment variables. Now you'll be able to use the 
 * Eval
 * Weather
 * YouTube/Reddit/TikTok Download
+* Lock
+* Matrix
+* Cron
+* Google
+* Stackoverflow search
+* Useful links saver
 * ...
 
 ## Contributing
