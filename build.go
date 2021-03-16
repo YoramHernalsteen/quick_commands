@@ -5,13 +5,45 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 )
 
 func main() {
 	files := getFiles("./commands")
+	osUser := runtime.GOOS
 	fmt.Printf("\n")
-	for _, file := range files {
-		build(file)
+
+	switch os.Args[1:][0] {
+	case "windows":
+		if osUser != "windows" {
+			fmt.Println("Changing env to Windows")
+			os.Setenv("GOOS", "windows")
+		}
+
+		for _, file := range files {
+			build(file)
+		}
+	case "linux":
+		if osUser != "linux" {
+			fmt.Println("Changing env to Linux")
+			os.Setenv("GOOS", "linux")
+		}
+
+		for _, file := range files {
+			build(file)
+		}
+	case "mac":
+		if osUser != "darwin" {
+			fmt.Println("Changing env to Darwin (macOS)")
+			os.Setenv("GOOS", "darwin")
+		}
+
+		for _, file := range files {
+			build(file)
+		}
+
+	default:
+		fmt.Println("Please specify a build OS. (windows, linux or mac")
 	}
 }
 
@@ -35,7 +67,7 @@ func build(file string) {
 	cmd := exec.Command("go", "build", "-o", "bin", file)
 	err := cmd.Run()
 	if err != nil {
-		fmt.Println("Error encountered: \n")
+		fmt.Println("Error encountered: ")
 		fmt.Println(err)
 		os.Exit(1)
 	}
