@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -9,20 +10,34 @@ import (
 )
 
 func main() {
-	search := strings.Join(os.Args[1:], " ")
+	var limit int
+	var amount int
+	var search string
+
+	flag.IntVar(&limit, "l", 0, "Limits amount of results. Example 5")
+	flag.IntVar(&limit, "limit", 0, "Limits amount of results")
+	flag.Parse()
+
+	if limit == 0 {
+		search = strings.Join(os.Args[1:], " ")
+		amount = 7
+	} else {
+		search = strings.Join(os.Args[3:], " ")
+		amount = limit
+	}
 
 	if search == "" {
-		fmt.Println("Please search for something.")
+		fmt.Println("Please provide a term to search for.")
 		os.Exit(1)
 	}
 
 	fmt.Printf("\nYou searched for:\n%s\n\n", search)
 	search = strings.Replace(search, " ", "+", -1)
-
 	url := fmt.Sprintf("https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=relevance&q=%s&site=stackoverflow", search)
 
 	resp, err := http.Get(url)
 	if err != nil {
+		fmt.Println(err)
 		fmt.Println("You've used special characters or you have achieved your rate limit.")
 		os.Exit(1)
 	}
@@ -35,7 +50,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	for i := range respPayload.Items {
+	for i := 0; i < amount; i++ {
 		if respPayload.Items[i].IsAnswered {
 			fmt.Printf("\033]8;;%s\033\\%s\033]8;;\033\\\n", respPayload.Items[i].Link, string(respPayload.Items[i].Title))
 			fmt.Println("─────────────────────────────────────────────────────────────────────────────────────────────────────────")
