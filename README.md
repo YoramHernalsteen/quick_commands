@@ -15,17 +15,19 @@ Add the bin folder to your environment variables. Now you'll be able to use the 
 
 * searchfile `file-/folder name` - Finds all the corresponding paths of files and folder with that specific name. 
 * timer `minutes` - Starts a countdown timer for specified time.
+* so `-l/-limit int` `search term` - Stackoverflow search, limit flag is optional. From default it returns 7 links. 
+* lock - Locks the PC, windows only.
 
 ## To-Do Commands
 
 * Eval
 * Weather
 * YouTube/Reddit/TikTok Download
-* Lock
+* ~~Lock~~
 * Matrix
 * Cron
 * Google
-* Stackoverflow search
+* ~~Stackoverflow search~~
 * Useful links saver
 * ...
 
