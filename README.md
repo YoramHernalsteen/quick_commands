@@ -29,6 +29,8 @@ Add the bin folder to your environment variables. Now you'll be able to use the 
 * Google
 * ~~Stackoverflow search~~
 * Useful links saver
+* ~~Help command~~ *Needs to be rewritten*
+* Repo downloader
 * ...
 
 ## Contributing
