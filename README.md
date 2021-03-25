@@ -5,8 +5,9 @@ A collection of commands to use in your terminal/command prompt.
 
 ##### Building all commmands at once
 ```
-go run build.go
+go run build.go <OS>
 ```
+OS - windows, linux or mac.
 ##### Enabling commands globally
 Add the bin folder to your environment variables. Now you'll be able to use the command everywhere.
 
