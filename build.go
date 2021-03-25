@@ -35,7 +35,7 @@ func main() {
 	}
 
 	for _, file := range files {
-		build(file)
+		build(file, osUser)
 	}
 }
 
@@ -55,13 +55,16 @@ func getFiles(dir string) []string {
 	return files
 }
 
-func build(file string) {
+func build(file string, osUser string) {
 	cmd := exec.Command("go", "build", "-o", "bin", file)
 	err := cmd.Run()
 	if err != nil {
 		fmt.Println("Error encountered: ")
 		fmt.Println(err)
-		os.Exit(1)
+		fmt.Println("Did not build:", file)
+		if osUser == "darwin" {
+			fmt.Println("This could be because you Mac is missing Command Line tools. To fix this issue install: xcode-select --install")
+		}
 	}
 
 	fmt.Println("Sucessfully build:", file)

@@ -19,6 +19,10 @@ Add the bin folder to your environment variables. Now you'll be able to use the 
 * so `-l/-limit int` `search term` - Stackoverflow search, limit flag is optional. From default it returns 7 links. 
 * lock - Locks the PC, windows only.
 
+## Known issues:
+Building certain commands on Mac will need: xcode-select (`xcode-select --install`).
+This will download the Command Line Tools.
+
 ## To-Do Commands
 
 * Eval
