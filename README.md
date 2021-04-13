@@ -18,10 +18,13 @@ Add the bin folder to your environment variables. Now you'll be able to use the 
 * timer `minutes` - Starts a countdown timer for specified time.
 * so `-l/-limit int` `search term` - Stackoverflow search, limit flag is optional. From default it returns 7 links. 
 * lock - Locks the PC, windows only.
+* internetspeed - checks download, upload, ping, ip, isp and the location of the server via headless chrome. This means chrome must be installed!
 
 ## Known issues:
 Building certain commands on Mac will need: xcode-select (`xcode-select --install`).
 This will download the Command Line Tools.
+
+The command internetspeed works via headless chrome. This means chrome must be installed if you run this command.
 
 ## To-Do Commands
 
