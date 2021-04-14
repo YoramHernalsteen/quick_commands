@@ -38,7 +38,7 @@ func main(){
 	fmt.Println("Duration of operation:", time.Since(start).Seconds(), "seconds")
 }
 
-func measureSpeed() (*speedCheck, error){
+func measureSpeed() (speedCheck, error){
 	chromeContext, cancel := chromedp.NewContext(
 		context.Background(),
 		chromedp.WithLogf(log.Printf),
@@ -46,7 +46,7 @@ func measureSpeed() (*speedCheck, error){
 	defer cancel()
 	chromeContext, cancel = context.WithTimeout(chromeContext, 60*time.Second)
 	defer cancel()
-	speedCheck := new(speedCheck)
+	speedCheck := speedCheck{}
 	err  := chromedp.Run(chromeContext,
 		emulation.SetUserAgentOverride(`chromedp/chromedp v0.6.10`),
 		chromedp.Navigate(`https://fast.com`),
